@@ -1,10 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+
+import {
+ 
+  RouterProvider,
+} from "react-router-dom";
 import './index.css'
+import MyRouter from './Router/Router.jsx';
+import Authprovider from './Firebase/Authprovider.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+   <Authprovider>
+    <RouterProvider router={MyRouter} ></RouterProvider>
+    </Authprovider>
   </React.StrictMode>,
 )

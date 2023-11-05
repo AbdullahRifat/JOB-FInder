@@ -1,0 +1,82 @@
+[
+  {
+      "PostedBy": "Company A",
+      "JobTitle": "Software Engineer",
+      "PostingDate": "2023-11-01",
+      "ApplicationDeadline": "2023-11-15",
+      "SalaryRange": "$60,000 - $80,000",
+      "JobApplicantsNumber": 50,
+      "Category": "On Site Job",
+      "Details": "Company A is a software development company looking for a Software Engineer to join their team. The position is a full-time on-site role."
+  },
+  {
+      "PostedBy": "Company B",
+      "JobTitle": "Marketing Manager",
+      "PostingDate": "2023-11-02",
+      "ApplicationDeadline": "2023-11-16",
+      "SalaryRange": "$50,000 - $70,000",
+      "JobApplicantsNumber": 40,
+      "Category": "On Site Job",
+      "Details": "Company B is a marketing agency seeking a Marketing Manager to lead their marketing efforts. This is a full-time on-site position."
+  },
+  {
+      "PostedBy": "Company C",
+      "JobTitle": "Data Analyst",
+      "PostingDate": "2023-11-03",
+      "ApplicationDeadline": "2023-11-17",
+      "SalaryRange": "$70,000 - $90,000",
+      "JobApplicantsNumber": 60,
+      "Category": "Remote Job",
+      "Details": "Company C is a data analytics firm offering a remote position for a Data Analyst. The role allows you to work from anywhere."
+  },
+  {
+      "PostedBy": "Company D",
+      "JobTitle": "Content Writer",
+      "PostingDate": "2023-11-04",
+      "ApplicationDeadline": "2023-11-18",
+      "SalaryRange": "$40,000 - $60,000",
+      "JobApplicantsNumber": 35,
+      "Category": "Remote Job",
+      "Details": "Company D is a content creation company hiring a remote Content Writer. You can work from the comfort of your own home."
+  },
+  {
+      "PostedBy": "Company E",
+      "JobTitle": "IT Support Specialist",
+      "PostingDate": "2023-11-05",
+      "ApplicationDeadline": "2023-11-19",
+      "SalaryRange": "$55,000 - $75,000",
+      "JobApplicantsNumber": 45,
+      "Category": "Hybrid",
+      "Details": "Company E is an IT services provider offering a hybrid IT Support Specialist position. It combines on-site and remote work."
+  },
+  {
+      "PostedBy": "Company F",
+      "JobTitle": "Graphic Designer",
+      "PostingDate": "2023-11-06",
+      "ApplicationDeadline": "2023-11-20",
+      "SalaryRange": "$45,000 - $65,000",
+      "JobApplicantsNumber": 30,
+      "Category": "Hybrid",
+      "Details": "Company F is a design agency looking for a Graphic Designer. The role offers a hybrid work arrangement."
+  },
+  {
+      "PostedBy": "Company G",
+      "JobTitle": "Customer Service Representative",
+      "PostingDate": "2023-11-07",
+      "ApplicationDeadline": "2023-11-21",
+      "SalaryRange": "$20,000 - $30,000",
+      "JobApplicantsNumber": 25,
+      "Category": "Part Time",
+      "Details": "Company G is a customer service company hiring Part-Time Customer Service Representatives."
+  },
+  {
+      "PostedBy": "Company H",
+      "JobTitle": "Social Media Coordinator",
+      "PostingDate": "2023-11-08",
+      "ApplicationDeadline": "2023-11-22",
+      "SalaryRange": "$25,000 - $35,000",
+      "JobApplicantsNumber": 20,
+      "Category": "Part Time",
+      "Details": "Company H is seeking a part-time Social Media Coordinator to manage their social media presence."
+  }
+]
