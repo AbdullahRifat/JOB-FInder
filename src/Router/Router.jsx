@@ -5,11 +5,12 @@ import Home from "../Pages/Home";
 import Alljobs from "../Pages/Alljobs";
 import Appliedjobs from "../Pages/Appliedjobs";
 import Blogs from "../Pages/Blogs";
-import Userprofile from "../Pages/Userprofile";
+
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Myjobs from "../Pages/Myjobs";
 import Jobdetails from "../Pages/Jobdetails";
+import Addjob from "../Pages/Addjob";
 
 
 const MyRouter = createBrowserRouter([
@@ -33,16 +34,16 @@ const MyRouter = createBrowserRouter([
             element: <Appliedjobs></Appliedjobs>
         },
         {
+            path: "/addjob",
+            element: <Addjob></Addjob>
+        },
+        {
             path: "/myjobs",
             element: <Myjobs></Myjobs>
         },
         {
             path: "/blogs",
             element: <Blogs></Blogs>
-        },
-        {
-            path: "/userprofile",
-            element: <Userprofile></Userprofile>
         },
         {
             path: "/login",

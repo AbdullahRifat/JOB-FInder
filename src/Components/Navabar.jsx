@@ -118,9 +118,9 @@ const Navbar = () => {
               ? "font-extrabold bg-purple-600 text-white mr-1"
               : "mr-1"
           }
-          to={"/userprofile"}
+          to={"/addjob"}
         >
-          User Profile
+          Add Job
         </NavLink>
       </li>
     </>
