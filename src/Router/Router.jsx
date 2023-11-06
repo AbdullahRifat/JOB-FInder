@@ -65,7 +65,7 @@ const MyRouter = createBrowserRouter([
         },
         {
             path: "/deletejob/:jobid",
-            element: <Updatejob></Updatejob>
+           
         }
       ]
     },

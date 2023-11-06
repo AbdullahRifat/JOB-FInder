@@ -1,9 +1,15 @@
 import { NavLink } from "react-router-dom";
+import axioshook from "../Hooks/axioshook";
+import Swal from "sweetalert2";
 
 
 // eslint-disable-next-line react/prop-types
 const Jobcard2 = ({job})=> {
-  
+
+    const axiosSecure = axioshook()
+
+
+    
   const {
     _id,
     jobBanner,
@@ -16,6 +22,45 @@ const Jobcard2 = ({job})=> {
     applicationDeadline,
     email,
     jobApplicants} = job || {}
+
+
+const handleDelete = () => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosSecure.delete(`/delete/${_id}`)
+        .then((response) => {
+          if (response.data.deletedCount > 0) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(() => {
+              location.reload();
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+  });
+};
+
+
+
+
+
+
+    
+  
   return (
 
     <div className="card w-auto bg-base-100 shadow-xl">
@@ -33,7 +78,7 @@ const Jobcard2 = ({job})=> {
     </div>
       <div className="card-actions">
       <NavLink to={`/updatejob/${_id}`}> <button className="btn btn-primary">Update</button></NavLink>
-      <NavLink to={`/deletejob/${_id}`}> <button className="btn btn-primary">Delete</button></NavLink>
+      <NavLink to={`/deletejob/${_id}`}> <button onClick={handleDelete} className="btn btn-primary">Delete</button></NavLink>
       </div>
     </div>
   </div>

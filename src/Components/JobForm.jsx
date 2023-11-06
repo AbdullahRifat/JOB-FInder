@@ -37,7 +37,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="jobBanner"
       name="jobBanner"
       className="w-full bg-gray-200 border-collapse"
-      defaultValue={job.jobBanner}
+      defaultValue={job?.jobBanner}
       required
     />
   </div>
@@ -48,7 +48,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="jobTitle"
       name="jobTitle"
       className="w-full bg-gray-200 border-collapse"
-      defaultValue={job.jobTitle}
+      defaultValue={job?.jobTitle}
       required
     />
   </div>
@@ -59,7 +59,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="userName"
       name="userName"
       className="w-full bg-gray-200 border-collapse"
-      defaultValue={job.userName}
+      defaultValue={job?.userName}
       required
     />
   </div>
@@ -70,7 +70,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="jobCategory"
       name="jobCategory"
       className="w-full bg-gray-200 border-collapse font-bold"
-      defaultValue={job.jobCategory}
+      defaultValue={job?.jobCategory}
       required
     >
       <option value="" disabled>Select a category</option>
@@ -87,7 +87,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="salaryRange"
       name="salaryRange"
       className="w-full bg-gray-200 border-collapse"
-      defaultValue={job.salaryRange}
+      defaultValue={job?.salaryRange}
       required
     />
   </div>
@@ -97,7 +97,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="jobDescription"
       name="jobDescription"
       className="w-full bg-gray-200 border-collapse"
-      defaultValue={job.jobDescription}
+      defaultValue={job?.jobDescription}
       required
     ></textarea>
   </div>
@@ -111,7 +111,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       className="w-full bg-gray-200 border-collapse"
       selected={startDate} onChange={(date) => setStartDate(date)}
       
-      defaultValue={job.jobPostingDate}
+      defaultValue={job?.jobPostingDate}
       required
     />
   </div>
@@ -124,7 +124,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       name="applicationDeadline"
       className="w-full bg-gray-200 border-collapse"
       selected={startDate} onChange={(date) => setStartDate(date)}
-      defaultValue={job.applicationDeadline}
+      defaultValue={job?.applicationDeadline}
       required
     />
   </div>
@@ -136,7 +136,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="jobApplicants"
       name="jobApplicants"
       className="w-full bg-gray-200 border-collapse"
-      defaultValue={job.jobApplicants}
+      defaultValue={job?.jobApplicants}
       required
     />
   </div>:""
