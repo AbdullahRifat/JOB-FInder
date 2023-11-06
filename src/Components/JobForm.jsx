@@ -9,7 +9,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
 
   const {user} = useContext(AuthContext)
 
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -20,7 +20,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
     formData.forEach((value, key) => {
       formObject[key] = value;
     });
-    formObject.Email = user?.Email||"";
+    formObject.email = user?.email||"";
     formObject.jobApplicants = 0;
     
     onFormSubmit(formObject);

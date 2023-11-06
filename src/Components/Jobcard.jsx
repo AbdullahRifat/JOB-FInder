@@ -14,7 +14,7 @@ const Jobcard = ({job})=> {
     jobDescription,
     jobPostingDate,
     applicationDeadline,
-    Email,
+    email,
     jobApplicants} = job || {}
   return (
 

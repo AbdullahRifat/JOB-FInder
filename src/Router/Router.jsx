@@ -11,6 +11,7 @@ import Register from "../Register/Register";
 import Myjobs from "../Pages/Myjobs";
 import Jobdetails from "../Pages/Jobdetails";
 import Addjob from "../Pages/Addjob";
+import PrivateRoute from "../Firebase/PrivateRoute";
 
 
 const MyRouter = createBrowserRouter([
@@ -35,7 +36,7 @@ const MyRouter = createBrowserRouter([
         },
         {
             path: "/addjob",
-            element: <Addjob></Addjob>
+            element:<PrivateRoute> <Addjob></Addjob></PrivateRoute> 
         },
         {
             path: "/myjobs",
