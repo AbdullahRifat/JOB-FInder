@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+
 import Categorytabs from "../Components/Categorytabs";
 
 import Slider from "../Components/Slider";
@@ -23,10 +23,10 @@ const Home = () => {
   }, []); 
     
     return (
-        <div>
+        <div className="mx-auto max-w-screen-xl">
             <div><Slider></Slider></div>
             
-            <div><h1>Job By Category</h1>
+            <div className="my-28" ><h1 className="font-bold text-4xl text-center">Job By Category</h1>
                 <Categorytabs jobdata={alljobs}></Categorytabs>
                 
             

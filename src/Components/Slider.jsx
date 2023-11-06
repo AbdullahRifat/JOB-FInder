@@ -1,13 +1,10 @@
-/* eslint-disable react/prop-types */
-
-
-
 
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
+import Banner from "./Banner"
 
 
-const Slider = ({filteredBrands}) => {
+const Slider = () => {
  
 
  
@@ -46,14 +43,20 @@ const Slider = ({filteredBrands}) => {
       },
     ]
   )
+  
+
 
 
   return (
     <>
-      <div ref={sliderRef} className="keen-slider">
-        <div className="keen-slider__slide number-slide1"><img className="w-full mx-auto object-cover "  alt="" />1</div>
-        <div className="keen-slider__slide number-slide2"><img className="w-full mx-auto object-cover "  alt="" />2</div>
-        <div className="keen-slider__slide number-slide3"><img className="w-full mx-auto object-cover "  alt="" />3</div>
+      <div ref={sliderRef} className="keen-slider max-w-screen-xl mx-auto">
+        <div className="keen-slider__slide number-slide1">
+          <Banner src={"https://images2.imgbox.com/56/9a/vpPVGkmk_o.jpg"}></Banner>
+        </div>
+        <div className="keen-slider__slide number-slide2">
+          <Banner src={"https://images2.imgbox.com/38/d2/JTcDjQfG_o.jpg"}></Banner>
+          </div>
+      
       </div>
     </>
   )

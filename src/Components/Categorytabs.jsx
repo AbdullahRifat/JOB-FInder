@@ -10,7 +10,7 @@ const jobCategoryTabs = ({jobdata}) =>{
   
   return (
   <Tabs>
-    <TabList>
+    <TabList className="font-bold">
       <Tab>On Site Jobs</Tab>
       <Tab>Remote Jobs</Tab>
       <Tab>Hybrid Jobs</Tab>
@@ -24,7 +24,7 @@ const jobCategoryTabs = ({jobdata}) =>{
         .filter((job) => job.jobCategory.toLowerCase() === 'on site')
         .map((job, index) => (
           <div key={index}>
-           <Jobcard job={job}></Jobcard>
+            {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
             {/* Render other job details here */}
           </div>
         ))}
@@ -38,7 +38,7 @@ const jobCategoryTabs = ({jobdata}) =>{
         .filter((job) => job.jobCategory.toLowerCase() === 'remote')
         .map((job, index) => (
           <div key={index}>
-            <Jobcard job={job}></Jobcard>
+             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
             {/* Render other job details here */}
           </div>
         ))}
@@ -52,7 +52,7 @@ const jobCategoryTabs = ({jobdata}) =>{
         .filter((job) => job.jobCategory.toLowerCase() === 'hybrid')
         .map((job, index) => (
           <div key={index}>
-            <Jobcard job={job}></Jobcard>
+             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
             {/* Render other job details here */}
           </div>
         ))}
@@ -66,7 +66,7 @@ const jobCategoryTabs = ({jobdata}) =>{
         .filter((job) => job.jobCategory.toLowerCase() === 'part time')
         .map((job, index) => (
           <div key={index}>
-            <Jobcard job={job}></Jobcard>
+             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
             {/* Render other job details here */}
           </div>
         ))}

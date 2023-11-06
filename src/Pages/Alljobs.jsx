@@ -2,6 +2,7 @@
 import Jobcard from "../Components/Jobcard";
 import  { useEffect, useState } from "react";
 import axioshook from "../Hooks/axioshook";
+import Banner from "../Components/Banner";
 
 
 
@@ -29,7 +30,10 @@ const Alljobs = () => {
   }, [axiosSecure]); 
 
     return (
-        <div>{
+        <div>
+          <Banner src={"https://images2.imgbox.com/af/73/ZUQgJvEQ_o.jpg"}></Banner>
+          
+          {
            alljobs? alljobs.map((job,idx)=>{
 
                 return (
