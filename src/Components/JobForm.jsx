@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../Firebase/Authprovider";
 
-function JobForm({ onFormSubmit,job }) {
+function JobForm({ onFormSubmit,job ,addjobcondition }) {
   const [startDate, setStartDate] = useState(new Date());
 
   const {user} = useContext(AuthContext)
@@ -20,13 +20,15 @@ function JobForm({ onFormSubmit,job }) {
     formData.forEach((value, key) => {
       formObject[key] = value;
     });
-    formObject.Email = user.Email;
+    formObject.Email = user?.Email||"";
+    formObject.jobApplicants = 0;
+    
     onFormSubmit(formObject);
   }
 
   return (
     <div className="max-w-screen-xl mx-auto" >
-      <h2 className="text-4xl font-extrabold text-center">Add A Job</h2>
+      
       <form onSubmit={handleSubmit}>
   <div>
     <label className="font-bold" htmlFor="jobBanner">Picture URL of the Job Banner:</label>
@@ -126,7 +128,8 @@ function JobForm({ onFormSubmit,job }) {
       required
     />
   </div>
-  <div>
+  {
+    addjobcondition?<div>
     <label className="font-bold" htmlFor="jobApplicants">Job Applicants Number:</label>
     <input
       type="number"
@@ -136,7 +139,9 @@ function JobForm({ onFormSubmit,job }) {
       //defaultValue={job.JobApplicantsNumber}
       required
     />
-  </div>
+  </div>:""
+  }
+  
   <button className=" my-8 btn btn-primary" type="submit">Submit</button>
  </form>
 

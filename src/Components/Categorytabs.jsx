@@ -6,7 +6,7 @@ import Jobcard from './Jobcard';
 // Import your job data or pass it as props
  // Replace with your actual job data
 
-const CategoryTabs = ({jobdata}) =>{ 
+const jobCategoryTabs = ({jobdata}) =>{ 
   
   return (
   <Tabs>
@@ -21,7 +21,7 @@ const CategoryTabs = ({jobdata}) =>{
       {/* Render the On Site Jobs content */}
       <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
       {jobdata
-        .filter((job) => job.Category.toLowerCase() === 'on site job')
+        .filter((job) => job.jobCategory.toLowerCase() === 'on site')
         .map((job, index) => (
           <div key={index}>
            <Jobcard job={job}></Jobcard>
@@ -35,7 +35,7 @@ const CategoryTabs = ({jobdata}) =>{
       {/* Render the Remote Jobs content */}
      <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
      {jobdata
-        .filter((job) => job.Category.toLowerCase() === 'remote job')
+        .filter((job) => job.jobCategory.toLowerCase() === 'remote')
         .map((job, index) => (
           <div key={index}>
             <Jobcard job={job}></Jobcard>
@@ -49,7 +49,7 @@ const CategoryTabs = ({jobdata}) =>{
       {/* Render the Hybrid Jobs content */}
     <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
     {jobdata
-        .filter((job) => job.Category.toLowerCase() === 'hybrid')
+        .filter((job) => job.jobCategory.toLowerCase() === 'hybrid')
         .map((job, index) => (
           <div key={index}>
             <Jobcard job={job}></Jobcard>
@@ -63,7 +63,7 @@ const CategoryTabs = ({jobdata}) =>{
       {/* Render the Part Time Jobs content */}
      <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
      {jobdata
-        .filter((job) => job.Category.toLowerCase() === 'part time')
+        .filter((job) => job.jobCategory.toLowerCase() === 'part time')
         .map((job, index) => (
           <div key={index}>
             <Jobcard job={job}></Jobcard>
@@ -77,4 +77,4 @@ const CategoryTabs = ({jobdata}) =>{
 }
 ;
 
-export default CategoryTabs;
+export default jobCategoryTabs;
