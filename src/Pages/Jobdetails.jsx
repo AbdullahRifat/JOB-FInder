@@ -24,13 +24,39 @@ const Jobdetails = () => {
 
     }
     ,[jobid])
+      
+  // const {
+  //   _id,
+  //   jobBanner,
+  //   jobTitle,
+  //   userName,
+  //   jobCategory,
+  //   salaryRange,
+  //   jobDescription,
+  //   jobPostingDate,
+  //   applicationDeadline,
+  //   email,
+  //   jobApplicants} = jobdata || {}
     
    
 
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center max-w-screen-xl mx-auto">
           {jobdata ? (
-            <div>{jobdata.jobDescription}</div>
+            <div className="card lg:card-side bg-base-100 shadow-xl">
+            <figure><img className="w-full" src={jobdata.jobBanner} alt="Album"/></figure>
+            <div className="card-body lg: pt-56 lg:pb-56 ">
+
+              <h2 className="card-title">{jobdata. jobTitle}</h2>
+              <p>Job Details:{jobdata.jobDescription}</p>
+              <p>Salary Range{jobdata.salaryRange}</p>
+              <p>Applicants{jobdata.jobApplicants}</p>
+             
+              <div className="card-actions justify-start">
+                <button className="btn btn-primary">Appy</button>
+              </div>
+            </div>
+          </div>
           ) : (
             <span className="loading loading-spinner text-primary"></span>
           )}
