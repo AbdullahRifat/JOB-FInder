@@ -101,6 +101,41 @@ const Jobdetails = () => {
   //   }
   // };
 
+
+
+  /**
+   *  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosSecure.delete(`/delete/${_id}`)
+        .then((response) => {
+          if (response.data.deletedCount > 0) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(() => {
+              location.reload();
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+  });
+   * 
+   * 
+   * 
+   */
+
   const handleApply = () => {
     if (jobdata) {
 
@@ -110,7 +145,43 @@ const Jobdetails = () => {
       console.log(typeof(applyemail))
       const userApplied = jobdata.applyemail.includes(user?.email);
 
-  
+      /**
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosSecure.delete(`/delete/${_id}`)
+        .then((response) => {
+          if (response.data.deletedCount > 0) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(() => {
+              location.reload();
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+  });
+       * 
+       * 
+       */
       if (userApplied) {
         Swal.fire({
           position: "top-center",
@@ -129,27 +200,80 @@ const Jobdetails = () => {
         };
   
         // Send a PUT request to update jobdata (assuming jobdata is already available)
-        axiosSecure
-          .put(`/updatejob/${jobid}`, updateData, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((response) => {
-            if (response.data.modifiedCount > 0) {
-              Swal.fire({
-                position: "top-center",
-                icon: "success",
-                title: "Updated Successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            }
-          })
-          .catch((error) => {
-            // Handle any errors that occur during the Axios request
-            console.error("Error:", error);
-          });
+
+
+        Swal.fire({
+          title: `Name:${user.displayName} - Email:${user.email}`,
+          text: "Are you sure to apply?",
+          icon: 'info',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Submit Application'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axiosSecure
+            .put(`/updatejob/${jobid}`, updateData, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+            .then((response) => {
+              if (response.data.modifiedCount > 0) {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Updated Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            })
+            .catch((error) => {
+              // Handle any errors that occur during the Axios request
+              console.error("Error:", error);
+            });
+          }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // axiosSecure
+        //   .put(`/updatejob/${jobid}`, updateData, {
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //   })
+        //   .then((response) => {
+        //     if (response.data.modifiedCount > 0) {
+        //       Swal.fire({
+        //         position: "top-center",
+        //         icon: "success",
+        //         title: "Updated Successfully",
+        //         showConfirmButton: false,
+        //         timer: 1500,
+        //       });
+        //     }
+        //   })
+        //   .catch((error) => {
+        //     // Handle any errors that occur during the Axios request
+        //     console.error("Error:", error);
+        //   });
       }
     }
   };

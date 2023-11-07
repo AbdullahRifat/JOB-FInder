@@ -19,7 +19,7 @@ const Appliedjobs = () => {
  
 
   axiosSecure
-    .get(`/applyjobs`)
+    .get(`/alljobs`)
     .then((response) => {
       // Update the component's state with the fetched data
       setAlljobs(response.data);
