@@ -22,7 +22,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
     });
     formObject.email = user?.email||"";
     formObject.jobApplicants = 0;
-    
+    formObject.applyemail = [];
     onFormSubmit(formObject);
   }
 
