@@ -9,12 +9,12 @@ import Footer from "../Components/Footer";
 
 const Mainlayouts = () => {
     return (
-        <div>
+        <div className="bg-gray-300 italic">
              
-            <div><Navbar></Navbar></div>
+            <div className="mb-24 bg-info"><Navbar></Navbar></div>
             
-            <div><Outlet></Outlet></div>
-            <div><Footer></Footer></div>
+            <div className="my-24 italic"><Outlet></Outlet></div>
+            <div className="mt-24"><Footer></Footer></div>
            
             
         </div>

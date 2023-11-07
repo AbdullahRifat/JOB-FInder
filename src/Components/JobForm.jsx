@@ -6,6 +6,7 @@ import { AuthContext } from "../Firebase/Authprovider";
 
 function JobForm({ onFormSubmit,job ,addjobcondition }) {
   const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndtDate] = useState(new Date());
 
   const {user} = useContext(AuthContext)
 
@@ -27,45 +28,45 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto" >
+    <div className="max-w-screen-xl mx-auto relative flex flex-col justify-center min-h-screen overflow-hidden " >
       
-      <form onSubmit={handleSubmit}>
+      <form className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl" onSubmit={handleSubmit}>
   <div>
-    <label className="font-bold" htmlFor="jobBanner">Picture URL of the Job Banner:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobBanner">Picture URL of the Job Banner:</label>
     <input
       type="text"
       id="jobBanner"
       name="jobBanner"
-      className="w-full bg-gray-200 border-collapse"
+      className=" block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40  border-collapse"
       defaultValue={job?.jobBanner}
       required
     />
   </div>
   <div>
-    <label className="font-bold" htmlFor="jobTitle">Job Title:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobTitle">Job Title:</label>
     <input
       type="text"
       id="jobTitle"
       name="jobTitle"
-      className="w-full bg-gray-200 border-collapse"
+      className=" block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40  border-collapse"
       defaultValue={job?.jobTitle}
       required
     />
   </div>
   <div>
-    <label className="font-bold" htmlFor="userName">Logged In User Name:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="userName">Logged In User Name:</label>
     <input
       type="text"
       id="userName"
       name="userName"
-      className="w-full bg-gray-200 border-collapse"
+      className=" block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40  border-collapse"
       defaultValue={job?.userName}
       required
     />
   </div>
   
   <div>
-    <label className="font-bold" htmlFor="jobCategory">Job Category:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobCategory">Job Category:</label>
     <select
       id="jobCategory"
       name="jobCategory"
@@ -81,18 +82,18 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
     </select>
   </div>
   <div>
-    <label className="font-bold" htmlFor="salaryRange">Salary Range:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="salaryRange">Salary Range:</label>
     <input
       type="text"
       id="salaryRange"
       name="salaryRange"
-      className="w-full bg-gray-200 border-collapse"
+      className=" block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40  border-collapse"
       defaultValue={job?.salaryRange}
       required
     />
   </div>
   <div>
-    <label className="font-bold" htmlFor="jobDescription">Job Description:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobDescription">Job Description:</label>
     <textarea
       id="jobDescription"
       name="jobDescription"
@@ -102,7 +103,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
     ></textarea>
   </div>
   <div>
-    <label className="font-bold" htmlFor="jobPostingDate">Job Posting Date:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobPostingDate">Job Posting Date:</label>
     <br />
     <DatePicker
       type="date"
@@ -116,26 +117,26 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
     />
   </div>
   <div>
-    <label className="font-bold" htmlFor="applicationDeadline">Application Deadline:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="applicationDeadline">Application Deadline:</label>
     <br />
     <DatePicker
       type="date"
       id="applicationDeadline"
       name="applicationDeadline"
       className="w-full bg-gray-200 border-collapse"
-      selected={startDate} onChange={(date) => setStartDate(date)}
+      selected={endDate} onChange={(date) => setEndtDate(date)}
       defaultValue={job?.applicationDeadline}
       required
     />
   </div>
   {
     addjobcondition?<div>
-    <label className="font-bold" htmlFor="jobApplicants">Job Applicants Number:</label>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobApplicants">Job Applicants Number:</label>
     <input
       type="number"
       id="jobApplicants"
       name="jobApplicants"
-      className="w-full bg-gray-200 border-collapse"
+      className=" block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40  border-collapse"
       defaultValue={job?.jobApplicants}
       required
     />

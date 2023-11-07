@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import axioshook from "../Hooks/axioshook";
 import Swal from "sweetalert2";
 
@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Jobcard2 = ({job})=> {
 
     const axiosSecure = axioshook()
-
+    const location = useLocation()
 
     
   const {
@@ -35,7 +35,7 @@ const handleDelete = () => {
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
     if (result.isConfirmed) {
-      axiosSecure.delete(`/delete/${_id}`)
+      axiosSecure.delete(`/myjobs/${_id}`)
         .then((response) => {
           if (response.data.deletedCount > 0) {
             Swal.fire(
@@ -43,7 +43,7 @@ const handleDelete = () => {
               'Your file has been deleted.',
               'success'
             ).then(() => {
-              location.reload();
+               window.location.reload();
             });
           }
         })
@@ -67,7 +67,7 @@ const handleDelete = () => {
     <figure className="px-10 pt-10">
       <img src={jobBanner} alt="Shoes" className="rounded-xl" />
     </figure>
-    <div className="card-body items-center ">
+    <div className="card-body px-10 items-center md:items-start ">
     <div className="text-start">
     <h2 className="card-title">{userName}</h2>
     <p className=" font-bold">{jobTitle}</p>
@@ -78,7 +78,7 @@ const handleDelete = () => {
     </div>
       <div className="card-actions">
       <NavLink to={`/updatejob/${_id}`}> <button className="btn btn-primary">Update</button></NavLink>
-      <NavLink to={`/deletejob/${_id}`}> <button onClick={handleDelete} className="btn btn-primary">Delete</button></NavLink>
+      <NavLink state={location.pathname} to={`/deletejob/${_id}`} replace> <button onClick={handleDelete} className="btn btn-primary">Delete</button></NavLink>
       </div>
     </div>
   </div>

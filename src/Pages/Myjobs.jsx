@@ -41,9 +41,10 @@ useEffect(() => {
 
 
     return (
-        <div>
+        <div className="max-w-screen-xl mx-auto">
+          <h2 className="text-center font-extrabold text-4xl  shadow-xl">My Listed Jobs</h2>
             {
-               userLoaded?myjobs.map((job,idx)=> <div key={idx}><Jobcard2 job={job}></Jobcard2></div>):<div
+               userLoaded?<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">{myjobs.map((job,idx)=> <div key={idx}><Jobcard2 job={job}></Jobcard2></div>)}</div>:<div
                className="max-w-screen-xl min-h-screen mx-auto flex justify-center items-center">
                 <span className="loading loading-spinner text-primary"></span>
                </div>

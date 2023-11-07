@@ -43,9 +43,9 @@ const Navbar = () => {
         <NavLink
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "text-primary font-extrabold bg-white"
               : isActive
-              ? "font-extrabold bg-purple-600 text-white mr-1"
+              ? "font-extrabold bg-primary text-white mr-1"
               : "mr-1"
           }
           to={"/"}
@@ -57,9 +57,9 @@ const Navbar = () => {
         <NavLink
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "text-primary font-extrabold bg-white"
               : isActive
-              ? "font-extrabold bg-purple-600 text-white mr-1"
+              ? "font-extrabold bg-primary text-white mr-1"
               : "mr-1"
           }
           to={"/alljobs"}
@@ -71,9 +71,9 @@ const Navbar = () => {
         <NavLink
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "text-primary font-extrabold bg-white"
               : isActive
-              ? "font-extrabold bg-purple-600 text-white mr-1"
+              ? "font-extrabold bg-primary text-white mr-1"
               : "mr-1"
           }
           to={"/appliedjobs"}
@@ -85,9 +85,9 @@ const Navbar = () => {
         <NavLink
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "text-primary font-extrabold bg-white"
               : isActive
-              ? "font-extrabold bg-purple-600 text-white mr-1"
+              ? "font-extrabold bg-primary text-white mr-1"
               : "mr-1"
           }
           to={"/myjobs"}
@@ -99,9 +99,9 @@ const Navbar = () => {
         <NavLink
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "text-primary font-extrabold bg-white"
               : isActive
-              ? "font-extrabold bg-purple-600 text-white mr-1"
+              ? "font-extrabold bg-primary text-white mr-1"
               : "mr-1"
           }
           to={"/blogs"}
@@ -113,9 +113,9 @@ const Navbar = () => {
         <NavLink
           className={({ isActive, isPending }) =>
             isPending
-              ? "pending"
+              ? "text-primary font-extrabold bg-white"
               : isActive
-              ? "font-extrabold bg-purple-600 text-white mr-1"
+              ? "font-extrabold bg-primary text-white mr-1"
               : "mr-1"
           }
           to={"/addjob"}
@@ -128,7 +128,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="bg-base-200">
+    <div className="bg-info text-white">
       <div className="navbar max-w-screen-xl mx-auto p-4">
         <div className="navbar-start">
           <div className="dropdown">
@@ -159,7 +159,7 @@ const Navbar = () => {
             <div className="flex items-center ">
               <img className="md:w-12 h-10 w-10 md:h-12 rounded-full" src="/logo.png" alt="" />
               <p className="btn btn-ghost normal-case text-lg md:text-2xl">
-                Phone <span className="text-rose">Mania</span>
+                JOB<span className="text-gray-800">SEEKERS</span>
               </p>
             </div>
           </Link>
@@ -195,7 +195,7 @@ const Navbar = () => {
             </div>
           ) : (
             <Link to={"/login"}>
-              <button className="btn bg-purple-600 text-white">Login</button>
+              <button className="btn bg-primary text-white">Login</button>
             </Link>
           )}
           <div className="ml-2 flex items-center justify-center">

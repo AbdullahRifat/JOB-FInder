@@ -2,14 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Firebase/Authprovider";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axioshook from "../Hooks/axioshook";
+import { Helmet } from "react-helmet";
 
 
 
 const Login = () => {
 
+   
+
     const {googleSingIn,signIn}  = useContext(AuthContext)
     const navigate = useNavigate()
     const location= useLocation()
+    const axiosSecure = axioshook()
    
     //states to manage input
     const [email,setEmail] = useState("")
@@ -46,7 +51,23 @@ const Login = () => {
     const handleSignIn = ()=>{
         if((email,password)){
             signIn(email,password)
-            .then((res)=> navigate(location?.state? location.state : '/'))
+            .then((res)=> {
+                
+                const loggesInUser = res.user
+                console.log(loggesInUser)
+                const user = {email}
+                axiosSecure
+                .post('/jwt',user)
+                .then(res=>{
+                    console.log(res.data)
+                    if(res.data.success){
+                        navigate(location?.state? location.state : '/')
+                    }
+                })
+                
+        
+        
+                })
             .then(()=> Swal.fire({
                 position: 'top-center',
                 icon: 'success',
@@ -69,7 +90,9 @@ const Login = () => {
     }
 
      return (
+        
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+             <Helmet><title>Login</title></Helmet>
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-purple-700 ">
                    login

@@ -33,7 +33,7 @@ const MyRouter = createBrowserRouter([
         },
         {
             path: "/appliedjobs",
-            element: <Appliedjobs></Appliedjobs>
+            element: <PrivateRoute><Appliedjobs></Appliedjobs> </PrivateRoute> 
         },
         {
             path: "/addjob",
@@ -41,7 +41,7 @@ const MyRouter = createBrowserRouter([
         },
         {
             path: "/myjobs",
-            element: <Myjobs></Myjobs>
+            element: <PrivateRoute> <Myjobs></Myjobs> </PrivateRoute>
         },
         {
             path: "/blogs",
@@ -57,14 +57,15 @@ const MyRouter = createBrowserRouter([
         },
         {
             path: "/jobdetails/:jobid",
-            element: <Jobdetails></Jobdetails>
+            element: <PrivateRoute> <Jobdetails></Jobdetails></PrivateRoute>
         },
         {
             path: "/updatejob/:jobid",
-            element: <Updatejob></Updatejob>
+            element: <PrivateRoute><Updatejob></Updatejob> </PrivateRoute>
         },
         {
             path: "/deletejob/:jobid",
+            element: <PrivateRoute><Myjobs></Myjobs></PrivateRoute>
            
         }
       ]

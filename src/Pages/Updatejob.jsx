@@ -88,20 +88,22 @@
 // export default Updatejob;
 
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axioshook from "../Hooks/axioshook";
 import JobForm from "../Components/JobForm";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Firebase/Authprovider";
+import { Helmet } from "react-helmet";
 
 const Updatejob = () => {
   const { jobid } = useParams();
   const [jobdata, setJobdata] = useState(null);
   const axiosSecure = axioshook();
-
+const {user} = useContext(AuthContext)
   useEffect(() => {
     axiosSecure
-      .get(`/jobdetails/${jobid}`)
+      .get(`/jobdetails/${jobid}`,{withCredentials:true})
       .then((response) => {
         // Update the component's state with the fetched data
         setJobdata(response.data);
@@ -145,6 +147,10 @@ const Updatejob = () => {
 
   return (
     <div>
+          <Helmet><title>Updatejob</title></Helmet>
+           <h1 className="text-3xl mt-28 font-semibold text-center text-purple-700 ">
+           Update Job
+                </h1>
       {jobdata ? (
         <JobForm
           onFormSubmit={handleFormSubmit}

@@ -10,12 +10,15 @@ import {
     signOut
 } from "firebase/auth";
 import app from "./firebase.config";
+import axioshook from "../Hooks/axioshook";
+
 
 const auth = getAuth(app)
 
 export const AuthContext = createContext(null)
-
+const axiosSecure = axioshook()
 const Authprovider = ({children}) => {
+
     //for stating see more
     // const [show,setShow]= useState(false)
     const [isLoading, setIsLoading] = useState(true);
@@ -48,8 +51,29 @@ const Authprovider = ({children}) => {
     useEffect(()=>{
 
         const unSubscribe = onAuthStateChanged(auth,(currentUser)=>{
+
+            const userEmail = currentUser?.email ||user?.email 
+            const loggedUser = {email:userEmail};
             setUser(currentUser)
             setIsLoading(false)
+            if(currentUser){
+                
+                axiosSecure.post('/jwt',loggedUser,{withCredentials:true})
+                .then(
+                    res=>{
+                        console.log(res.data)
+                    }
+                )
+
+            }
+            else{
+                axiosSecure.post('/logout',loggedUser,{withCredentials:true})
+                .then(
+                    res=>{
+                        console.log(res.data)
+                    }
+                )
+            }
         })
         
         return (()=>unSubscribe())

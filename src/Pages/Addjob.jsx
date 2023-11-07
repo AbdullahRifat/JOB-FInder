@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import JobForm from "../Components/JobForm";
 
 import axioshook from "../Hooks/axioshook";
+import { Helmet } from "react-helmet";
 
 
 const Addjob = () => {
@@ -35,8 +36,12 @@ const Addjob = () => {
       const addjobcondition = false
 
     return (
-        <div>
-            <h2 className="text-4xl font-extrabold text-center">Add A Job</h2>
+        <div className="">
+           <Helmet><title>Addjob</title></Helmet>
+           <h1 className="text-3xl mt-28 font-semibold text-center text-purple-700 ">
+           Add A Job
+                </h1>
+            
             <JobForm onFormSubmit={handleFormSubmit} job={null} addjobcondition={addjobcondition}></JobForm>
             
         </div>

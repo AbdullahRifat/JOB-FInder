@@ -20,28 +20,38 @@ const jobCategoryTabs = ({jobdata}) =>{
     <TabPanel>
       {/* Render the On Site Jobs content */}
       <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
-      {jobdata
-        .filter((job) => job.jobCategory.toLowerCase() === 'on site')
-        .map((job, index) => (
-          <div key={index}>
-            {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
-            {/* Render other job details here */}
-          </div>
-        ))}
+      {jobdata.filter((job) => job.jobCategory.toLowerCase() === 'on site').length > 0 ? (
+  jobdata
+    .filter((job) => job.jobCategory.toLowerCase() === 'on site')
+    .map((job, index) => (
+      <div key={index}>
+        {<Jobcard job={job}></Jobcard>}
+        {/* Render other job details here */}
+      </div>
+    ))
+) : (
+  <div className='min-h-screen max-w-screen-xl flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>
+)}
+
       </div>
     </TabPanel>
 
     <TabPanel>
       {/* Render the Remote Jobs content */}
      <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
-     {jobdata
-        .filter((job) => job.jobCategory.toLowerCase() === 'remote')
-        .map((job, index) => (
-          <div key={index}>
-             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
-            {/* Render other job details here */}
-          </div>
-        ))}
+     {jobdata.filter((job) => job.jobCategory.toLowerCase() === 'remote').length > 0 ? (
+  jobdata
+    .filter((job) => job.jobCategory.toLowerCase() === 'remote')
+    .map((job, index) => (
+      <div key={index}>
+        {<Jobcard job={job}></Jobcard>}
+        {/* Render other job details here */}
+      </div>
+    ))
+) : (
+  <div className='min-h-screen max-w-screen-xl flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>
+)}
+
      </div>
     </TabPanel>
 
@@ -52,7 +62,7 @@ const jobCategoryTabs = ({jobdata}) =>{
         .filter((job) => job.jobCategory.toLowerCase() === 'hybrid')
         .map((job, index) => (
           <div key={index}>
-             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
+             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen max-w-screen-xl flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>}
             {/* Render other job details here */}
           </div>
         ))}
@@ -61,15 +71,20 @@ const jobCategoryTabs = ({jobdata}) =>{
 
     <TabPanel>
       {/* Render the Part Time Jobs content */}
-     <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
-     {jobdata
-        .filter((job) => job.jobCategory.toLowerCase() === 'part time')
-        .map((job, index) => (
-          <div key={index}>
-             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen m-auto'>No job Added</div>}
-            {/* Render other job details here */}
-          </div>
-        ))}
+     <div >
+     {jobdata.filter((job) => job.jobCategory.toLowerCase() === 'part time').length > 0 ? (
+  <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>{jobdata
+    .filter((job) => job.jobCategory.toLowerCase() === 'part time')
+    .map((job, index) => (
+      <div key={index}>
+        {<Jobcard job={job}></Jobcard>}
+        {/* Render other job details here */}
+      </div>
+    ))
+    }</div>) : (
+  <div className='min-h-screen max-w-screen-xl italic flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>
+)}
+
      </div>
     </TabPanel>
   </Tabs>

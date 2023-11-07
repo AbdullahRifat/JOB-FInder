@@ -4,47 +4,37 @@ import axioshook from "../Hooks/axioshook";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../Firebase/Authprovider";
+import Spinner from "../Components/Spinner";
+
+
+//mui card
+
+
+
+
 
 
 const Jobdetails = () => {
-    // const { jobid } = useParams()
-    // const [jobdata,setJobdata] = useState()
-    // const axiosSecure = axioshook()
+   
      const {user} = useContext(AuthContext)
-
-    
-    // useEffect(()=>{
-    //     axiosSecure
-    //     .get(`/jobdetails/${jobid}`)
-    //     .then((response) => {
-    //       // Update the component's state with the fetched data
-          
-    //       setJobdata(response.data);
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error fetching data:", error);
-    //     });
-
-    // }
-    // ,[jobid])
-      
-  // const {
-  //   _id,
-  //   jobBanner,
-  //   jobTitle,
-  //   userName,
-  //   jobCategory,
-  //   salaryRange,
-  //   jobDescription,
-  //   jobPostingDate,
-  //   applicationDeadline,
-  //   email,
-  //   jobApplicants} = jobdata || {}
-    
+   
   
+    
+   
     const { jobid } = useParams();
     const [jobdata, setJobdata] = useState({ applyemail: [] });
   const axiosSecure = axioshook();
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasApplied, setHasApplied] = useState(false);
+
+
+
+  useEffect(() => {
+    // Check if user is authenticated
+    if (user) {
+      setIsLoading(false);
+    }
+  }, [user]);
 
   useEffect(() => {
 
@@ -54,87 +44,17 @@ const Jobdetails = () => {
       .then((response) => {
         // Update the component's state with the fetched data
         setJobdata(response.data);
+        setIsLoading(false);
+        setHasApplied(response.data.applyemail.includes(user?.email));
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
-  }, [jobid]);
+  }, [jobid,user]);
 
   
-  // const handleApply = () => {
-
-
-    
-  //   console.log(jobdata)
-  //   if (jobdata) {
-
-
-  //     const updateData = {
-  //       jobApplicants: (parseInt(jobdata.jobApplicants, 10) || 0) + 1,
-  //       appliedEmail: user?.email,
-  //     };
-  //     // Set appliedEmail with the user's email
-      
-  
-  //     // Send a PUT request to update jobdata (assuming jobdata is already available)
-  //     axiosSecure
-  //       .put(`/updatejob/${jobid}`, updateData, {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       })
-  //       .then((response) => {
-  //         if (response.data.modifiedCount > 0) {
-  //           Swal.fire({
-  //             position: "top-center",
-  //             icon: "success",
-  //             title: "Updated Successfully",
-  //             showConfirmButton: false,
-  //             timer: 1500,
-  //           });
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         // Handle any errors that occur during the Axios request
-  //         console.error("Error:", error);
-  //       });
-  //   }
-  // };
-
-
-
-  /**
-   *  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      axiosSecure.delete(`/delete/${_id}`)
-        .then((response) => {
-          if (response.data.deletedCount > 0) {
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            ).then(() => {
-              location.reload();
-            });
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    }
-  });
-   * 
-   * 
-   * 
-   */
+ 
 
   const handleApply = () => {
     if (jobdata) {
@@ -142,47 +62,25 @@ const Jobdetails = () => {
       if (!jobdata.applyemail) {
         jobdata.applyemail = [];
       }
-      console.log(typeof(applyemail))
+     
       const userApplied = jobdata.applyemail.includes(user?.email);
 
-      /**
-       * 
-       * 
-       * 
-       * 
-       * 
-       * 
-       * Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      axiosSecure.delete(`/delete/${_id}`)
-        .then((response) => {
-          if (response.data.deletedCount > 0) {
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            ).then(() => {
-              location.reload();
-            });
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error);
+     
+      console.log(user.email,jobdata.email)
+
+      const currentTimestamp = new Date().getTime();
+      if (jobdata?.applicationDeadline
+      && currentTimestamp > new Date(jobdata?.applicationDeadline).getTime()){
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: "Deadline is over",
+          showConfirmButton: false,
+          timer: 1500,
         });
-    }
-  });
-       * 
-       * 
-       */
-      if (userApplied) {
+      }
+
+      else if (userApplied) {
         Swal.fire({
           position: "top-center",
           icon: "info",
@@ -190,8 +88,20 @@ const Jobdetails = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-      } else {
+      }
+      else if(user?.email===jobdata?.email){
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: "you can't apply on own job",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+
+      else {
         // Update the applyemail array by pushing the user's email
+      
         jobdata.applyemail.push(user?.email);
   
         const updateData = {
@@ -236,44 +146,7 @@ const Jobdetails = () => {
           }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // axiosSecure
-        //   .put(`/updatejob/${jobid}`, updateData, {
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //   })
-        //   .then((response) => {
-        //     if (response.data.modifiedCount > 0) {
-        //       Swal.fire({
-        //         position: "top-center",
-        //         icon: "success",
-        //         title: "Updated Successfully",
-        //         showConfirmButton: false,
-        //         timer: 1500,
-        //       });
-        //     }
-        //   })
-        //   .catch((error) => {
-        //     // Handle any errors that occur during the Axios request
-        //     console.error("Error:", error);
-        //   });
+        
       }
     }
   };
@@ -283,61 +156,13 @@ const Jobdetails = () => {
   
   
   
-  
-  
-
-///
-// const formData = {
-//   jobBanner: jobdata?.jobBanner,
-//   jobTitle: jobdata?.jobTitle,
-//   userName: jobdata?.userName,
-//   jobCategory: jobdata?.jobCategory,
-//   salaryRange: jobdata?.salaryRange,
-//   jobDescription: jobdata?.jobDescription,
-//   jobPostingDate: jobdata?.jobPostingDate,
-//   applicationDeadline: jobdata?.applicationDeadline,
-//   email: user?.email,
-//   jobApplicants: jobdata?.jobApplicants,
-// };
-
-
-// const handleApply = () => {
-//   // Send the form data to the server using Axios
-//   axiosSecure
-//     .post('/applyjobs', formData, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     })
-//     .then((response) => {
-//       if (response.data.insertedId) {
-//         Swal.fire({
-//           position: 'top-center',
-//           icon: 'success',
-//           title: 'Job Added Successfully',
-//           showConfirmButton: false,
-//           timer: 1500,
-//         });
-//       }
-//     })
-//     .catch((error) => {
-//       // Handle any errors that occur during the Axios request
-//       console.error('Error:', error);
-//     });
-// };
-
-
-
-
-
-   ///
 
     return (
-        <div className="flex justify-center items-center max-w-screen-xl mx-auto">
-          {jobdata ? (
+      isLoading?<Spinner></Spinner>:<div className="flex justify-center items-center max-w-screen-xl mx-auto">
+              {jobdata ? (
             <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img className="w-full" src={jobdata.jobBanner} alt="Album"/></figure>
-            <div className="card-body lg: pt-56 lg:pb-56 ">
+            <div className="card-body flex flex-col justify-center items-center lg:mt-32 lg:mb-32">
 
               <h2 className="card-title">{jobdata. jobTitle}</h2>
               <p>Job Details:{jobdata.jobDescription}</p>

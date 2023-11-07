@@ -8,10 +8,10 @@ const PrivateRoute = ({ children }) => {
  
   const { user ,isLoading} = useContext(AuthContext);
 
-  console.log(user)
+  
 
   if(isLoading){
-    return <span className="loading loading-infinity loading-lg"></span>
+    return <div className="flex justify-center min-h-screen items-center"><span className="loading text-center loading-infinity text-primary loading-lg"></span></div>
   }
   
 
