@@ -5,6 +5,7 @@ import Jobcard from "../Components/Jobcard";
 import Jobcard2 from "../Components/Jobcard2";
 import useAxioshook from "../hooks/useAxioshook";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const Myjobs = () => {
@@ -46,6 +47,7 @@ useEffect(() => {
 
     return (
         <div className="max-w-screen-xl mx-auto">
+            <Helmet><title>myjobs</title></Helmet>
          {
           alljobs.length===0?<div className="min-h-screen flex justify-center items-center font-bold text-primary text-4xl">You Have Not Added Any Jobs</div>: <div>
           <h2 className="text-center font-extrabold text-4xl  shadow-xl my-24">My Listed Jobs</h2>

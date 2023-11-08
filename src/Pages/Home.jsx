@@ -9,6 +9,8 @@ import Marquee from "react-fast-marquee";
 import Latestjob from "../Components/Latestjobs";
 import { motion, useScroll, useSpring } from "framer-motion";
 import useAxioshook from "../hooks/useAxioshook";
+import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const Home = () => {
@@ -49,20 +51,12 @@ const Home = () => {
 
   // Take the top 3 jobs
   const top3Jobs = sortedJobs.slice(0, 3);
-
-  const [latest, setLatest] = useState([])
-  useEffect(() => {
-
-    fetch('/public/latest.json')
-      .then(res => res.json())
-      .then(data => setLatest(data))
-  }, [
-
-  ])
+  const latest = useLoaderData()
 
 
   return (
     <div>
+      <Helmet><title>Home</title></Helmet>
       <motion.div className="fixed top-0 left-0 right-0 h-3 bg-primary origin-[0] z-50" style={{ scaleX }} />
 <div className="mx-auto max-w-screen-xl">
       <div><Slider></Slider></div>

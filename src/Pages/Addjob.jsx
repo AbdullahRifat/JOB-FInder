@@ -37,7 +37,7 @@ const Addjob = () => {
 
     return (
         <div className="">
-           <Helmet><title>Addjob</title></Helmet>
+           <Helmet><title>alljob</title></Helmet>
            <h1 className="text-3xl mt-28 font-semibold text-center text-purple-700 ">
            Add A Job
                 </h1>

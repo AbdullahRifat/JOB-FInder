@@ -25,12 +25,12 @@ const MyRouter = createBrowserRouter([
         {
             path: "/",
             element: <Home></Home>,
-            loader: ()=>fetch('/jobdata.json')
+            loader: ()=>fetch('/latest.json'),
         },
         {
             path: "/alljobs",
             element: <Alljobs></Alljobs>,
-            loader: ()=> fetch('/jobdata.json')
+            
         },
         {
             path: "/appliedjobs",
