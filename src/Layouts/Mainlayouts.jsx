@@ -9,7 +9,7 @@ import Footer from "../Components/Footer";
 
 const Mainlayouts = () => {
     return (
-        <div className="bg-gray-300 italic">
+        <div className=" italic">
              
             <div className="mb-24 bg-info"><Navbar></Navbar></div>
             

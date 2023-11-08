@@ -123,7 +123,7 @@ const Jobdetails = () => {
         }).then((result) => {
           if (result.isConfirmed) {
             axiosSecure
-            .put(`/updatejob/${jobid}`, updateData, {
+            .post(`/applyjob/${jobid}`, updateData, {
               headers: {
                 "Content-Type": "application/json",
               },

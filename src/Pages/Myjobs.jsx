@@ -21,7 +21,7 @@ useEffect(() => {
   // Check if the user is loaded
   if (user) {
     setUserLoaded(true);
-   
+    navigate('/myjobs')
   }
 }, [user]);
 

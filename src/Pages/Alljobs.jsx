@@ -106,7 +106,7 @@ console.log(alljobs)
       <h2 className="text-center font-extrabold text-4xl  shadow-xl my-24"> All Jobs</h2>
     {
         
-        alljobs ?<div>{alljobs.length>0?<div className="grid grid-cols-3 gap-8 max-w-screen-xl mx-auto">{alljobs.map((job, idx) => {
+        alljobs ?<div>{alljobs.length>0?<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">{alljobs.map((job, idx) => {
 
           return (
            <div key={idx}> <Jobcard  job={job}></Jobcard>  </div>

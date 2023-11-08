@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import useAxioshook from "../hooks/useAxioshook";
 import Swal from "sweetalert2";
+import Pdf from "./Pdf";
 
 
 // eslint-disable-next-line react/prop-types
@@ -79,7 +80,9 @@ const handleDelete = () => {
       <div className="card-actions">
       <NavLink to={`/updatejob/${_id}`}> <button className="btn btn-primary">Update</button></NavLink>
       <NavLink state={location.pathname} to={`/deletejob/${_id}`} replace> <button onClick={handleDelete} className="btn btn-primary">Delete</button></NavLink>
+      
       </div>
+      
     </div>
   </div>
 

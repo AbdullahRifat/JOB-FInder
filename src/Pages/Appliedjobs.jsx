@@ -19,7 +19,7 @@ const Appliedjobs = () => {
  
 
   axiosSecure
-    .get(`/alljobs`)
+    .get(`/appliedjobs?email=${user?.email}`)
     .then((response) => {
       // Update the component's state with the fetched data
       setAlljobs(response.data);
@@ -40,7 +40,7 @@ useEffect(() => {
 
 
 //    const myjobs = alljobs.filter(job => job.email === user?.email)
-   const myjobs = alljobs.filter((job) => job.applyemail.includes(user?.email));
+//    const myjobs = alljobs.filter((job) => job.applyemail.includes(user?.email));
 
 
 
@@ -52,7 +52,7 @@ useEffect(() => {
         {
            userLoaded?
            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {myjobs.map((job,idx)=><Jobcard key={idx} job={job}></Jobcard>)}
+            {alljobs.map((job,idx)=>{return <Jobcard key={idx} job={job}></Jobcard>})}
             </div>
             :<div
            className="max-w-screen-xl min-h-screen mx-auto flex justify-center items-center">

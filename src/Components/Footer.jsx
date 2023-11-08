@@ -1,8 +1,9 @@
-
+import logofo from "../assets/logo2_footer.png"
 
 const Footer = () => {
     return (
         <footer className="footer footer-center p-10 bg-info text-white rounded">
+          <div><img src={logofo} alt="" /></div>
         <nav className="grid grid-flow-col gap-4">
           <a className="link link-hover">About us</a> 
           <a className="link link-hover">Contact</a> 
@@ -17,7 +18,7 @@ const Footer = () => {
           </div>
         </nav> 
         <aside>
-          <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+          <p>Copyright © 2023 - All right reserved byJob Finder Ltd</p>
         </aside>
       </footer>
     );

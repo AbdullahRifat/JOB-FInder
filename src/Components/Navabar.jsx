@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-
+import logofo from "../assets/logo2_footer.png"
+import logo from "../assets/logo.png"
 import { Link, useLocation,NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Firebase/Authprovider";
 import Swal from "sweetalert2";
@@ -157,10 +158,8 @@ const Navbar = () => {
           </div>
           <Link to={"/"}>
             <div className="flex items-center ">
-              <img className="md:w-12 h-10 w-10 md:h-12 rounded-full" src="/logo.png" alt="" />
-              <p className="btn btn-ghost normal-case text-lg md:text-2xl">
-                JOB<span className="text-gray-800">SEEKERS</span>
-              </p>
+              <img className="" src={logo} alt="" />
+             
             </div>
           </Link>
         </div>
