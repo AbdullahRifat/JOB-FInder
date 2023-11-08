@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import axioshook from "../Hooks/axioshook";
+import useAxioshook from "../hooks/useAxioshook";
 import { AuthContext } from "../Firebase/Authprovider";
 import Jobcard from "../Components/Jobcard";
 
@@ -10,7 +10,7 @@ const Appliedjobs = () => {
 
 
     const [alljobs, setAlljobs] = useState([]);
-    const axiosSecure = axioshook()
+    const axiosSecure = useAxioshook()
     const {user} = useContext(AuthContext)
     const [userLoaded, setUserLoaded] = useState(false);
 
@@ -47,9 +47,14 @@ useEffect(() => {
 
 
     return (
-        <div>
+        <div className="mx-auto max-w-screen-xl">
+            <h2 className="text-center font-extrabold text-4xl  shadow-xl my-24">All the jobs you have applied</h2>
         {
-           userLoaded?myjobs.map((job,idx)=> <div key={idx}><Jobcard job={job}></Jobcard></div>):<div
+           userLoaded?
+           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {myjobs.map((job,idx)=><Jobcard key={idx} job={job}></Jobcard>)}
+            </div>
+            :<div
            className="max-w-screen-xl min-h-screen mx-auto flex justify-center items-center">
             <span className="loading loading-spinner text-primary"></span>
            </div>

@@ -1,12 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
-import axioshook from "../Hooks/axioshook";
+import useAxioshook from "../hooks/useAxioshook";
 import Swal from "sweetalert2";
 
 
 // eslint-disable-next-line react/prop-types
 const Jobcard2 = ({job})=> {
 
-    const axiosSecure = axioshook()
+    const axiosSecure = useAxioshook()
     const location = useLocation()
 
     

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axioshook from "../Hooks/axioshook";
+import useAxioshook from "../hooks/useAxioshook";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../Firebase/Authprovider";
@@ -23,7 +23,7 @@ const Jobdetails = () => {
    
     const { jobid } = useParams();
     const [jobdata, setJobdata] = useState({ applyemail: [] });
-  const axiosSecure = axioshook();
+  const axiosSecure = useAxioshook();
   const [isLoading, setIsLoading] = useState(false);
   const [hasApplied, setHasApplied] = useState(false);
 
@@ -163,7 +163,7 @@ const Jobdetails = () => {
             <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img className="w-full" src={jobdata.jobBanner} alt="Album"/></figure>
             <div className="card-body flex flex-col justify-center items-center lg:mt-32 lg:mb-32">
-
+            <figure><img className="w-20 rounded-full" src={jobdata.jobLogo} alt="Album"/></figure>
               <h2 className="card-title">{jobdata. jobTitle}</h2>
               <p>Job Details:{jobdata.jobDescription}</p>
               <p>Salary Range{jobdata.salaryRange}</p>

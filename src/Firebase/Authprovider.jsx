@@ -10,14 +10,18 @@ import {
     signOut
 } from "firebase/auth";
 import app from "./firebase.config";
-import axioshook from "../Hooks/axioshook";
+
+import axios from "axios";
+
 
 
 const auth = getAuth(app)
 
 export const AuthContext = createContext(null)
-const axiosSecure = axioshook()
+
+
 const Authprovider = ({children}) => {
+    
 
     //for stating see more
     // const [show,setShow]= useState(false)
@@ -58,7 +62,7 @@ const Authprovider = ({children}) => {
             setIsLoading(false)
             if(currentUser){
                 
-                axiosSecure.post('/jwt',loggedUser,{withCredentials:true})
+                axios.post('http://localhost:3000/jwt',loggedUser,{withCredentials:true})
                 .then(
                     res=>{
                         console.log(res.data)
@@ -67,7 +71,7 @@ const Authprovider = ({children}) => {
 
             }
             else{
-                axiosSecure.post('/logout',loggedUser,{withCredentials:true})
+                axios.post('http://localhost:3000/logout',loggedUser,{withCredentials:true})
                 .then(
                     res=>{
                         console.log(res.data)

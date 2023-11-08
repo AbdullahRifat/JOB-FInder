@@ -43,6 +43,17 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
     />
   </div>
   <div>
+    <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobBanner">Picture URL of Comapny Logo:</label>
+    <input
+      type="text"
+      id="jobLogo"
+      name="jobLogo"
+      className=" block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40  border-collapse"
+      defaultValue={job?.jobLogo}
+      required
+    />
+  </div>
+  <div>
     <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobTitle">Job Title:</label>
     <input
       type="text"

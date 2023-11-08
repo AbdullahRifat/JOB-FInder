@@ -1,8 +1,11 @@
+import { Helmet } from "react-helmet";
 
 
 const Blogs = () => {
     return (
+        
         <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+            <Helmet><title>blogs</title></Helmet>
     <h1 className="text-3xl font-bold mb-4">Understanding Access Tokens and Refresh Tokens in Web Development</h1>
 
     <p className="text-lg font-semibold">In the world of web development and authentication, the concepts of access tokens and refresh tokens are essential to secure the communication between clients (e.g., web applications) and servers. Let's dive into what these tokens are, how they work, and where to store them on the client-side.</p>

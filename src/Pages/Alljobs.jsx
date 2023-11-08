@@ -1,7 +1,7 @@
 
 import Jobcard from "../Components/Jobcard";
 import { useEffect, useState } from "react";
-import axioshook from "../Hooks/axioshook";
+import useAxioshook from "../hooks/useAxioshook";
 import Banner from "../Components/Banner";
 import { Helmet } from "react-helmet";
 
@@ -14,7 +14,7 @@ const Alljobs = () => {
 
   const [alljobs, setAlljobs] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const axiosSecure = axioshook()
+  const axiosSecure = useAxioshook()
   const [searchSubmitted, setSearchSubmitted] = useState(false);
 
   useEffect(() => {

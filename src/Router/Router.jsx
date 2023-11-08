@@ -13,6 +13,7 @@ import Jobdetails from "../Pages/Jobdetails";
 import Addjob from "../Pages/Addjob";
 import PrivateRoute from "../Firebase/PrivateRoute";
 import Updatejob from "../Pages/Updatejob";
+import { Helmet } from "react-helmet";
 
 
 const MyRouter = createBrowserRouter([

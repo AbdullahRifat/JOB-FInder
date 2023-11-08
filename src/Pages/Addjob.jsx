@@ -1,13 +1,13 @@
 import Swal from "sweetalert2";
 import JobForm from "../Components/JobForm";
 
-import axioshook from "../Hooks/axioshook";
+import useAxioshook from "../hooks/useAxioshook";
 import { Helmet } from "react-helmet";
 
 
 const Addjob = () => {
 
-  const axiosSecure = axioshook()
+  const axiosSecure = useAxioshook()
     const handleFormSubmit = (formData) => {
         // Send the form data to the server using Axios
         axiosSecure

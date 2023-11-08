@@ -181,7 +181,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box"
+                className="mt-3 text-info z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box"
               >
                 <li>
                   <p className="text-xl">{user?.displayName}</p>

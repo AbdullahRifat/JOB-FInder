@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Firebase/Authprovider";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import axioshook from "../Hooks/axioshook";
+import useAxioshook from "../hooks/useAxioshook";
 import { Helmet } from "react-helmet";
 
 
@@ -14,7 +14,7 @@ const Login = () => {
     const {googleSingIn,signIn}  = useContext(AuthContext)
     const navigate = useNavigate()
     const location= useLocation()
-    const axiosSecure = axioshook()
+    const axiosSecure = useAxioshook()
    
     //states to manage input
     const [email,setEmail] = useState("")
