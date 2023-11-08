@@ -48,31 +48,35 @@ useEffect(() => {
 const { toPDF, targetRef } = usePDF({filename: 'page.pdf',page: { margin: Margin.MEDIUM }});
 
     return (
-        <div className="mx-auto max-w-screen-xl">
-            <h2 className="text-center font-extrabold text-4xl  shadow-xl my-24">All the jobs you have applied</h2>
+     <div>
         {
-           userLoaded?
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {alljobs.map((job,idx)=>{return (
-                <div   key={idx}>
-                   <button onClick={() => toPDF()}>Download Summary<BiSolidDownload></BiSolidDownload></button>
-                    <div ref={targetRef} >
-                    <div>
-                    <Jobcard key={idx} job={job}></Jobcard>
-                    </div>
+          alljobs.length===0?<div className="min-h-screen flex justify-center items-center font-bold text-primary text-4xl">You Have Not Applied Yet</div>:   <div className="mx-auto max-w-screen-xl">
+          <h2 className="text-center font-extrabold text-4xl  shadow-xl my-24">All the jobs you have applied</h2>
+      {
+         userLoaded?
+         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {alljobs.map((job,idx)=>{return (
+              <div   key={idx}>
+                 <button onClick={() => toPDF()}>Download Summary<BiSolidDownload></BiSolidDownload></button>
+                  <div ref={targetRef} >
+                  <div>
+                  <Jobcard key={idx} job={job}></Jobcard>
                   </div>
-                 
                 </div>
-                
-            )})}
-            </div>
-            :<div
-           className="max-w-screen-xl min-h-screen mx-auto flex justify-center items-center">
-            <span className="loading loading-spinner text-primary"></span>
-           </div>
+               
+              </div>
+              
+          )})}
+          </div>
+          :<div
+         className="max-w-screen-xl min-h-screen mx-auto flex justify-center items-center">
+          <span className="loading loading-spinner text-primary"></span>
+         </div>
+      }
+      
+  </div>
         }
-        
-    </div>
+     </div>
     );
 };
 

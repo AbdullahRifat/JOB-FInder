@@ -6,7 +6,7 @@ import { AuthContext } from "../Firebase/Authprovider";
 
 export  const axiosSecure = axios.create({
 
-    baseURL : 'http://localhost:3000/',
+    baseURL : 'https://job-seeking-server.vercel.app',
     withCredentials:true
 })
 

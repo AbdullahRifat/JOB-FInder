@@ -162,15 +162,15 @@ const Jobdetails = () => {
               {jobdata ? (
             <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img className="w-full" src={jobdata.jobBanner} alt="Album"/></figure>
-            <div className="card-body flex flex-col justify-center items-center lg:mt-32 lg:mb-32">
+            <div className="card-body flex flex-col justify-start items-start lg:mt-32 lg:mb-32">
             <figure><img className="w-20 rounded-full" src={jobdata.jobLogo} alt="Album"/></figure>
-              <h2 className="card-title">{jobdata. jobTitle}</h2>
-              <p>Job Details:{jobdata.jobDescription}</p>
-              <p>Salary Range{jobdata.salaryRange}</p>
-              <p>Applicants{jobdata.jobApplicants}</p>
+              <h2 className="card-title font-bold text-xl">Job Title : {jobdata. jobTitle}</h2>
+              <p className="font-bold">Job Details : {jobdata.jobDescription}</p>
+              <p className="font-bold">Salary Range : {jobdata.salaryRange}$</p>
+              <p className="font-bold">Applicants : {jobdata.jobApplicants}</p>
              
               <div className="card-actions justify-start">
-                <button onClick={handleApply} className="btn btn-primary">Appy</button>
+                <button onClick={handleApply} className="btn btn-primary">Apply</button>
               </div>
             </div>
           </div>

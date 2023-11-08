@@ -56,24 +56,29 @@ const jobCategoryTabs = ({jobdata}) =>{
     </TabPanel>
 
     <TabPanel>
-      {/* Render the Hybrid Jobs content */}
-    <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
-    {jobdata
-        .filter((job) => job.jobCategory.toLowerCase() === 'hybrid')
-        .map((job, index) => (
-          <div key={index}>
-             {job?<Jobcard job={job}></Jobcard>:<div className='min-h-screen max-w-screen-xl flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>}
-            {/* Render other job details here */}
-          </div>
-        ))}
-    </div>
+      {/* Render the Remote Jobs content */}
+     <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
+     {jobdata.filter((job) => job.jobCategory.toLowerCase() === 'hybrid').length > 0 ? (
+  jobdata
+    .filter((job) => job.jobCategory.toLowerCase() === 'hybrid')
+    .map((job, index) => (
+      <div key={index}>
+        {<Jobcard job={job}></Jobcard>}
+        {/* Render other job details here */}
+      </div>
+    ))
+) : (
+  <div className='min-h-screen max-w-screen-xl flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>
+)}
+
+     </div>
     </TabPanel>
 
     <TabPanel>
-      {/* Render the Part Time Jobs content */}
-     <div >
+      {/* Render the Remote Jobs content */}
+     <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
      {jobdata.filter((job) => job.jobCategory.toLowerCase() === 'part time').length > 0 ? (
-  <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>{jobdata
+  jobdata
     .filter((job) => job.jobCategory.toLowerCase() === 'part time')
     .map((job, index) => (
       <div key={index}>
@@ -81,8 +86,8 @@ const jobCategoryTabs = ({jobdata}) =>{
         {/* Render other job details here */}
       </div>
     ))
-    }</div>) : (
-  <div className='min-h-screen max-w-screen-xl italic flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>
+) : (
+  <div className='min-h-screen max-w-screen-xl flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>
 )}
 
      </div>

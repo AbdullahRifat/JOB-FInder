@@ -3,18 +3,33 @@ import Categorytabs from "../Components/Categorytabs";
 
 import Slider from "../Components/Slider";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import Jobcard from "../Components/Jobcard";
 import Marquee from "react-fast-marquee";
 import Latestjob from "../Components/Latestjobs";
+import { motion, useScroll, useSpring } from "framer-motion";
+import useAxioshook from "../hooks/useAxioshook";
+
 
 const Home = () => {
   const [alljobs, setAlljobs] = useState([]);
+  const axiosSecure = useAxioshook()
+  //framer
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+    top: '5rem',
+  });
+
+
+
 
   useEffect(() => {
     // Make an Axios GET request to fetch data from the API
-    axios
-      .get("http://localhost:3000/alljobs")
+    axiosSecure
+      .get("/alljobs")
       .then((response) => {
         // Update the component's state with the fetched data
         setAlljobs(response.data);
@@ -47,23 +62,25 @@ const Home = () => {
 
 
   return (
-    <div className="mx-auto max-w-screen-xl">
+    <div>
+      <motion.div className="fixed top-0 left-0 right-0 h-3 bg-primary origin-[0] z-50" style={{ scaleX }} />
+<div className="mx-auto max-w-screen-xl">
       <div><Slider></Slider></div>
 
-      <div className="my-28" ><h1 className="text-center font-extrabold text-4xl  shadow-xl">Job By Category</h1>
+      <div className="my-28" ><h1 className="text-center font-extrabold text-4xl my-24">Job By Category</h1>
         <Categorytabs jobdata={alljobs}></Categorytabs>
 
 
       </div>
-      <div >
-        <div className=" text-center font-extrabold text-4xl  shadow-xl" >TOP HIGHEST PAID JOBS</div>
+      <div  className="mt-24">
+        <div className=" text-center font-extrabold text-4xl " >TOP HIGHEST PAID JOBS</div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8  my-24 ">
           {
             top3Jobs.map((job, idx) => <Jobcard className="shadow-5xl " key={idx} job={job}></Jobcard>)
           }
         </div>
         <div className="my-36">
-          <h1 className="text-center font-extrabold text-4xl my-24 shadow-xl"> Meet Our Team</h1>
+          <h1 className="text-center font-extrabold text-4xl my-24 "> Meet Our Team</h1>
           <Marquee>
             <p className="text-center font-extrabold text-xl  shadow-xl">Meet the Dream Team of JobFinder.com
               This exceptional team, consisting of Bob Marley, Usain Bolt, and Max Verstappen, is the driving force behind    JobFinder.coms success.</p>
@@ -75,6 +92,7 @@ const Home = () => {
 
 
       </div>
+    </div>
     </div>
   );
 };

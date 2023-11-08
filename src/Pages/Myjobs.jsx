@@ -46,6 +46,8 @@ useEffect(() => {
 
     return (
         <div className="max-w-screen-xl mx-auto">
+         {
+          alljobs.length===0?<div className="min-h-screen flex justify-center items-center font-bold text-primary text-4xl">You Have Not Added Any Jobs</div>: <div>
           <h2 className="text-center font-extrabold text-4xl  shadow-xl my-24">My Listed Jobs</h2>
             {
                userLoaded?<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">{alljobs.map((job,idx)=> <div key={idx}><Jobcard2 job={job}></Jobcard2></div>)}</div>:<div
@@ -54,6 +56,8 @@ useEffect(() => {
                </div>
             }
             
+          </div>
+         }
         </div>
     );
 };

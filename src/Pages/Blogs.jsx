@@ -69,7 +69,7 @@ const Blogs = () => {
     </ul>
 
     <h2 className="text-xl font-semibold mt-4">Explaining the Code</h2>
-    <p className="font-semibold mt-2">The provided code demonstrates the use of access tokens and refresh tokens in a web application. It showcases the process of generating, storing, and using these tokens. The code also incorporates Express.js, a popular web framework for Node.js. It illustrates best practices for token storage and security.</p>
+    <p className="font-semibold mt-2">A React-Node.js web application is a dynamic and modern web platform that combines the power of two popular technologies: React, a front-end JavaScript library, and Node.js, a runtime environment for server-side JavaScript. React is used to create a responsive and interactive user interface, allowing for a seamless and engaging user experience. Meanwhile, Node.js serves as the back-end framework, facilitating server-side logic and data handling. This combination enables the development of high-performance web applications with real-time capabilities, making it a preferred choice for building web apps that demand interactivity and scalability. React-Node.js web apps are highly versatile and find applications in a wide range of domains, from e-commerce and social networking to content management systems and more, making them a popular choice for modern web development projects.</p>
 </div>
     );
 };

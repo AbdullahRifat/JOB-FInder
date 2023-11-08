@@ -88,7 +88,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       <option value="" disabled>Select a category</option>
       <option value="On Site">On Site</option>
       <option value="Remote">Remote Job</option>
-      <option value="Part-Time">Part-Time</option>
+      <option value="Part-Time">Part Time</option>
       <option value="Hybrid">Hybrid</option>
     </select>
   </div>
