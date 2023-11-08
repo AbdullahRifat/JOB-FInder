@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import useAxioshook from "../hooks/useAxioshook";
 import { AuthContext } from "../Firebase/Authprovider";
 import Jobcard from "../Components/Jobcard";
-
+import {Margin, usePDF } from 'react-to-pdf';
+import {BiSolidDownload} from 'react-icons/bi';
 
 const Appliedjobs = () => {
 
@@ -44,7 +45,7 @@ useEffect(() => {
 
 
 
-
+const { toPDF, targetRef } = usePDF({filename: 'page.pdf',page: { margin: Margin.MEDIUM }});
 
     return (
         <div className="mx-auto max-w-screen-xl">
@@ -52,7 +53,18 @@ useEffect(() => {
         {
            userLoaded?
            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {alljobs.map((job,idx)=>{return <Jobcard key={idx} job={job}></Jobcard>})}
+            {alljobs.map((job,idx)=>{return (
+                <div   key={idx}>
+                   <button onClick={() => toPDF()}>Download Summary<BiSolidDownload></BiSolidDownload></button>
+                    <div ref={targetRef} >
+                    <div>
+                    <Jobcard key={idx} job={job}></Jobcard>
+                    </div>
+                  </div>
+                 
+                </div>
+                
+            )})}
             </div>
             :<div
            className="max-w-screen-xl min-h-screen mx-auto flex justify-center items-center">
