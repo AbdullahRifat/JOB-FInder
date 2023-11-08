@@ -4,6 +4,7 @@ import { AuthContext } from "../Firebase/Authprovider";
 import Jobcard from "../Components/Jobcard";
 import Jobcard2 from "../Components/Jobcard2";
 import useAxioshook from "../hooks/useAxioshook";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Myjobs = () => {
@@ -12,13 +13,15 @@ const Myjobs = () => {
     const axiosSecure = useAxioshook()
     const {user} = useContext(AuthContext)
     const [userLoaded, setUserLoaded] = useState(false);
-
+    
+    const navigate = useNavigate()
 
 
 useEffect(() => {
   // Check if the user is loaded
   if (user) {
     setUserLoaded(true);
+   
   }
 }, [user]);
 
