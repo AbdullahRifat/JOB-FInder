@@ -50,7 +50,7 @@ const { toPDF, targetRef } = usePDF({filename: 'page.pdf',page: { margin: Margin
 
     return (
      <div>
-        <Helmet><title>appliedjobs</title></Helmet>
+        <Helmet><title>FI | Appliedjobs</title></Helmet>
         {
           alljobs.length===0?<div className="min-h-screen flex justify-center items-center font-bold text-primary text-4xl">You Have Not Applied Yet</div>:   <div className="mx-auto max-w-screen-xl">
           <h2 className="text-center font-extrabold text-4xl  shadow-xl my-24">All the jobs you have applied</h2>

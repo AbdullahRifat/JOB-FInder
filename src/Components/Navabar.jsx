@@ -68,34 +68,38 @@ const Navbar = () => {
           All Jobs
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "text-primary font-extrabold bg-info"
-              : isActive
-              ? "font-extrabold bg-primary text-white mr-1"
-              : "mr-1"
-          }
-          to={"/appliedjobs"}
-        >
-          Applied Jobs
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "text-primary font-extrabold bg-info"
-              : isActive
-              ? "font-extrabold bg-primary text-white mr-1"
-              : "mr-1"
-          }
-          to={"/myjobs"}
-        >
-           My Jobs
-        </NavLink>
-      </li>
+    {
+      user?   <li>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "text-primary font-extrabold bg-info"
+            : isActive
+            ? "font-extrabold bg-primary text-white mr-1"
+            : "mr-1"
+        }
+        to={"/appliedjobs"}
+      >
+        Applied Jobs
+      </NavLink>
+    </li>: ""
+    }
+     {
+      user? <li>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "text-primary font-extrabold bg-info"
+            : isActive
+            ? "font-extrabold bg-primary text-white mr-1"
+            : "mr-1"
+        }
+        to={"/myjobs"}
+      >
+         My Jobs
+      </NavLink>
+    </li>:""
+     }
       <li>
         <NavLink
           className={({ isActive, isPending }) =>
@@ -110,7 +114,8 @@ const Navbar = () => {
            Blogs
         </NavLink>
       </li>
-      <li>
+      {
+        user?<li>
         <NavLink
           className={({ isActive, isPending }) =>
             isPending
@@ -123,7 +128,8 @@ const Navbar = () => {
         >
           Add Job
         </NavLink>
-      </li>
+      </li>:""
+      }
     </>
   );
 
@@ -157,8 +163,8 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to={"/"}>
-            <div className="flex items-center ">
-              <img className="" src={logo} alt="" />
+            <div title={user?.displayName} className="flex items-center ">
+              <img className="" src={logo}  alt="" />
              
             </div>
           </Link>

@@ -43,7 +43,13 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500,
           }))
-        .catch(err=>console.log(err))
+        .catch(err=> Swal.fire({
+            position: 'top-center',
+            icon: 'error',
+            title: `${err.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          }))
         
         
     }

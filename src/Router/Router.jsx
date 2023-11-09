@@ -30,6 +30,7 @@ const MyRouter = createBrowserRouter([
         {
             path: "/alljobs",
             element: <Alljobs></Alljobs>,
+           
             
         },
         {

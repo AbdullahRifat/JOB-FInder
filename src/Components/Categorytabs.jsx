@@ -15,6 +15,7 @@ const jobCategoryTabs = ({jobdata}) =>{
       <Tab>Remote Jobs</Tab>
       <Tab>Hybrid Jobs</Tab>
       <Tab>Part Time Jobs</Tab>
+      <Tab>All Jobs</Tab>
     </TabList>
 
     <TabPanel>
@@ -89,6 +90,23 @@ const jobCategoryTabs = ({jobdata}) =>{
 ) : (
   <div className='min-h-screen max-w-screen-xl flex justify-center items-center text-4xl font-bold m-auto'>No job Added</div>
 )}
+
+     </div>
+    </TabPanel>
+    {/* alljobs */}
+    <TabPanel>
+      {/* Render the Remote Jobs content */}
+     <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
+     { (
+  jobdata
+  
+    .map((job, index) => (
+      <div key={index}>
+        {<Jobcard job={job}></Jobcard>}
+        {/* Render other job details here */}
+      </div>
+    ))
+) }
 
      </div>
     </TabPanel>

@@ -23,7 +23,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       formObject[key] = value;
     });
     formObject.email = user?.email||"";
-    formObject.jobApplicants = 0;
+    
     formObject.applyemail = [];
     onFormSubmit(formObject);
   }
@@ -72,7 +72,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       id="userName"
       name="userName"
       className=" block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40  border-collapse"
-      defaultValue={job?.userName}
+      defaultValue={user?.displayName}
       required
     />
   </div>
@@ -142,7 +142,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
     />
   </div>
   {
-    addjobcondition?<div>
+   <div>
     <label className=" block text-sm font-semibold text-gray-800" htmlFor="jobApplicants">Job Applicants Number:</label>
     <input
       type="number"
@@ -152,7 +152,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       defaultValue={job?.jobApplicants}
       required
     />
-  </div>:""
+  </div>
   }
   
   <motion.button  whileHover={{ scale: 1.1 }}
