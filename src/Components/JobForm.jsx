@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../Firebase/Authprovider";
+import { motion } from "framer-motion";
 
 function JobForm({ onFormSubmit,job ,addjobcondition }) {
   const [startDate, setStartDate] = useState(new Date());
@@ -88,7 +89,7 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
       <option value="" disabled>Select a category</option>
       <option value="On Site">On Site</option>
       <option value="Remote">Remote Job</option>
-      <option value="Part-Time">Part Time</option>
+      <option value="Part Time">Part Time</option>
       <option value="Hybrid">Hybrid</option>
     </select>
   </div>
@@ -154,11 +155,15 @@ function JobForm({ onFormSubmit,job ,addjobcondition }) {
   </div>:""
   }
   
-  <button className=" my-8 btn btn-primary" type="submit">Submit</button>
+  <motion.button  whileHover={{ scale: 1.1 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }} className=" my-8 btn btn-primary" type="submit">Submit</motion.button>
  </form>
 
     </div>
   );
 }
+{/* <motion.div
+      className="box"
+       */}
 
 export default JobForm;

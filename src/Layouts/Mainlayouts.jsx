@@ -22,6 +22,7 @@ const Mainlayouts = () => {
 
     return (
         <div className=" italic">
+          
              <motion.div className="fixed top-0 left-0 right-0 h-3 bg-primary origin-[0] z-50" style={{ scaleX }} />
 <div className="mx-auto max-w-screen-xl"></div>
             <div className="mb-24 bg-info sticky z-10 top-0"><Navbar></Navbar></div>

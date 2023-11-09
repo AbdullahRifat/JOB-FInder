@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Firebase/Authprovider";
 import Spinner from "../Components/Spinner";
 
-
+import { motion } from "framer-motion";
 //mui card
 
 
@@ -170,7 +170,10 @@ const Jobdetails = () => {
               <p className="font-bold">Applicants : {jobdata.jobApplicants}</p>
              
               <div className="card-actions justify-start">
-                <button onClick={handleApply} className="btn btn-primary">Apply</button>
+              <motion.button className="btn btn-primary"
+         whileHover={{ scale: 1.1 }}
+         transition={{ type: "spring", stiffness: 400, damping: 10 }} onClick={handleApply}  >Apply</motion.button>
+                
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import logofo from "../assets/logo2_footer.png"
+
 import logo from "../assets/logo.png"
 import { Link, useLocation,NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Firebase/Authprovider";
@@ -174,7 +174,7 @@ const Navbar = () => {
                   {user?.photoURL ? (
                     <img src={user.photoURL} />
                   ) : (
-                    <img src="/images/profile.svg" />
+                    <img src="/src/assets/profile.svg" />
                   )}
                 </div>
               </label>

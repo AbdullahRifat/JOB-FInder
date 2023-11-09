@@ -41,14 +41,35 @@ const Home = () => {
       });
   }, []);
 
+  // const sortedJobs = alljobs.slice().sort((a, b) => {
+  //   // Assuming salaryRange is a string with a numeric format like "50000-70000"
+  //   const salaryA = parseInt(a.salaryRange.split('-')[1]);
+  //   const salaryB = parseInt(b.salaryRange.split('-')[1]);
+  //   console.log(salaryA, salaryB);
+  //   return salaryB - salaryA;
+  // });
+
   const sortedJobs = alljobs.slice().sort((a, b) => {
-    // Assuming salaryRange is a string with a numeric format like "50000-70000"
-    const salaryA = parseInt(a.salaryRange.split('-')[1]);
-    const salaryB = parseInt(b.salaryRange.split('-')[1]);
+    const salaryRangeA = a.salaryRange;
+    const salaryRangeB = b.salaryRange;
+
+    const parseSalary = (range) => {
+        const salaryValues = range.split('-');
+        if (salaryValues.length === 2) {
+            return parseInt(salaryValues[1]);
+        } else if (!isNaN(salaryValues[0])) {
+            return parseInt(salaryValues[0]);
+        }
+        return 0; // Handle invalid salary ranges or non-numeric values
+    }
+
+    const salaryA = parseSalary(salaryRangeA);
+    const salaryB = parseSalary(salaryRangeB);
 
     return salaryB - salaryA;
-  });
+});
 
+ 
   // Take the top 3 jobs
   const top3Jobs = sortedJobs.slice(0, 3);
   const latest = useLoaderData()
