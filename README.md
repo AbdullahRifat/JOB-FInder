@@ -7,4 +7,4 @@
 * only jwt token verified users can  update Job who has posted the job
 * added monogodb server to get track of the products
 * top Hisghest paid salaray jobs are High lited
-
+* Technologies: React.js,express.js,Mongodb,Daisy UI,Tailwind
